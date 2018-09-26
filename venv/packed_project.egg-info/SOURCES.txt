@@ -1,0 +1,9 @@
+setup.py
+packed_project/__init__py.py
+packed_project/text.py
+packed_project.egg-info/PKG-INFO
+packed_project.egg-info/SOURCES.txt
+packed_project.egg-info/dependency_links.txt
+packed_project.egg-info/not-zip-safe
+packed_project.egg-info/requires.txt
+packed_project.egg-info/top_level.txt
