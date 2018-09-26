@@ -1,1 +1,1 @@
-from .text import *
+from packed_project.text import *
