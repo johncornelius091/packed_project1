@@ -17,7 +17,7 @@ setup(
     license='MIT',
     packages=['packed_project'],
     install_requires=[
-      'markdown', 'pytest', 'logger'
+      'markdown', 'pytest', 'logger', 'xlrd'
     ],
     tests_require=['pytest'],
     setup_requires=['pytest-runner'],

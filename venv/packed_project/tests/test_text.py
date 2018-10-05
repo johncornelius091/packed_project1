@@ -15,6 +15,7 @@ from itertools import (
 from functools import partial, reduce
 from unittest import TestCase
 from six.moves import filter, map, range, zip
+import pytest
 
 from packed_project import text as mi
 
@@ -34,11 +35,21 @@ class TextTests(TestCase):
         self.assertEqual(mi.addition(pattern, text1), mi.addition(pattern, text2))
 
 
-    def test_substraction(self):
-        ''' This function tests the substraction function'''
+    def test_int_string_addition(self):
+        ''' This function tests the default addition function'''
         pattern = 34
-        text1 = 2
-        text2 = 3
+        text1 = 'a'
+        text2 = 'b'
+        with pytest.raises(TypeError):
+           mi.addition(pattern, text1)
+
+
+    @pytest.mark.parametrize("pattern,text1,text2", [
+        (30, 10, 20),
+        (20, 2, 18),
+    ])
+    def test_substraction(self, pattern, text1, text2):
+        ''' This function tests the substraction function'''
         self.assertEqual(mi.substraction(pattern, text1), mi.substraction(pattern, text2))
 
 
@@ -47,4 +58,11 @@ class TextTests(TestCase):
         pattern = 34
         text1 = 2
         text2 = 3
+        self.assertEqual(mi.multiplication(pattern, text1), mi.multiplication(pattern, text2))
+
+
+    def test_multiplication_no_second_argument(self):
+        pattern = 3
+        text1 = 'b'
+        text2 = 'a'
         self.assertEqual(mi.multiplication(pattern, text1), mi.multiplication(pattern, text2))
