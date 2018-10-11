@@ -18,6 +18,3 @@ def is_anagram(str1, str2):
         Output : False
     '''
     return counter(str1) == counter(str2)
-
-
-def

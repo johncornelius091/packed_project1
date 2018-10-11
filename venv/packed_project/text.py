@@ -1,5 +1,7 @@
+""" check """
+
 from __future__ import print_function
-from itertools import (
+"""from itertools import (
     chain,
     compress,
     count,
@@ -14,7 +16,7 @@ from itertools import (
 )
 from operator import itemgetter, lt, gt, sub
 from sys import maxsize, version_info
-from functools import partial, wraps
+from functools import partial, wraps"""
 
 
 __all__ = [
@@ -26,17 +28,21 @@ __all__ = [
 
 
 def joke():
+    """ check """
     return (u'Wenn ist das Nunst\u00fcck git und Slotermeyer? Ja! ... '
             u'Beiherhund das Oder die Flipperwaldt gersput.')
 
 
 def addition(x, y):
+    """ check """
     return x + y
 
 
 def substraction(x, y):
+    """ check """
     return x - y
 
 
 def multiplication(x, y):
+    """ check """
     return x * y
