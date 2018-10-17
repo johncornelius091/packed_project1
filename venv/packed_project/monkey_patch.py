@@ -4,10 +4,11 @@ import os.path
 import datetime
 
 class Monkey:
-    date_variable = None
+    date_variable = dict()
 
     def __init__(self):
-        self.date_variable = None
+        self.adate_variable = dict()
+
 
     def getssh(self): # pseudo application code
         return os.path.join(os.path.expanduser("~john"), '.ssh')   # /home/john/.ssh   # /abc/.ssh
@@ -26,4 +27,5 @@ class Monkey:
 
 
     def get_some_attribute(self):
-        return date_variable
+        date_variable = {"id" :123}
+        return self.date_variable

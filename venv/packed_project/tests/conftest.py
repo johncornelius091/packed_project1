@@ -9,6 +9,10 @@ else:
 import pytest
 
 
+def pytest_report_header(config):
+    if config.option.verbose > 0:
+        return ["info1: did you know that ...", "did you?"]
+
 
 def test_read_hello(datadir):
     #assert set(os.listdir(str(datadir))) == {'local_directory', 'hello.txt', 'over.txt'}
@@ -32,7 +36,7 @@ def load_json_file():
         return "Its me, fixture"
 
 
-@pytest.fixture
+@pytest.fixture()
 def shared_datadir(request, tmpdir):
     original_shared_path = os.path.join(request.fspath.dirname, 'data')
     temp_path = Path(str(tmpdir.join('data')))
@@ -53,3 +57,17 @@ def datadir(original_datadir, tmpdir):
     else:
         result.mkdir()
     return result
+
+
+def pytest_runtest_makereport(item, call):
+    if "incremental" in item.keywords:
+        if call.excinfo is not None:
+            parent = item.parent
+            parent._previousfailed = item
+
+
+def pytest_runtest_setup(item):
+    if "incremental" in item.keywords:
+        previousfailed = getattr(item.parent, "_previousfailed", None)
+        if previousfailed is not None:
+            pytest.xfail("previous test failed (%s)" %previousfailed.name)

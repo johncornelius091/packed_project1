@@ -53,7 +53,7 @@ class MarkClassTests(TestCase):
         print("Python version is : ", sys.version_info)
 
 
-    @pytest.fixture(autouse=True)
+    @pytest.fixture(scope="module")
     def cur(self):
         return "Im inside function"
 

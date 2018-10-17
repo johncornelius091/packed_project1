@@ -44,13 +44,13 @@ class TextTests(TestCase):
            mi.addition(pattern, text1)
 
 
-    @pytest.mark.parametrize("pattern,text1,text2", [
-        (30, 10, 20),
-        (20, 2, 18),
-    ])
-    def test_substraction(self, pattern, text1, text2):
+    #@pytest.mark.parametrize("pattern, text1, text2", [(30, 10, 20),(20, 2, 18)])
+    def test_substraction(self):
         ''' This function tests the substraction function'''
-        self.assertEqual(mi.substraction(pattern, text1), mi.substraction(pattern, text2))
+        pattern = 30
+        text1 = 10
+        text2 = 50
+        self.assertEqual(mi.substraction(pattern, text1), abs(mi.substraction(pattern, text2)))
 
 
     def test_multiplication(self):

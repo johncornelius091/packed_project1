@@ -43,6 +43,7 @@ def test_custom_add(addition):
 
 
 def test_simple_interest(simple_interest):
+    #output_func = _sometest_functio()
     output = simple_interest(50000, 6, 3)    # 50,000/- , 6% interest & 3years time
     print(output)
     assert output == float(9000)
@@ -61,6 +62,13 @@ def tester(request):
     return a + b
 
 
+""" This is for single input & single output"""
+@pytest.mark.parametrize('tester', [(4, 5)],  indirect=True)
+def test_custom_add_1(tester):
+    print("in main function")
+    assert tester == 3
+
+
 """ This is for multiple input & mulitple output"""
 @pytest.mark.parametrize('tester, expected', [[(1, 2),3], [(4,6), 10],  [(7, 8), 15]], indirect=['tester'])
 def test_custom_add_1(tester, expected):
@@ -68,8 +76,10 @@ def test_custom_add_1(tester, expected):
     assert tester == expected
 
 
-""" This is for single input & single output"""
-@pytest.mark.parametrize('tester', [(1, 2)], indirect=True)
-def test_custom_add_1(tester):
-    print("in main function")
-    assert tester == 3
+
+
+@pytest.mark.skip("x", [0, 1])
+@pytest.mark.skipif(os.getenv("ENVIORONMENT") == "prod")
+@pytest.mark.parametrize("y", [2, 3])
+def test_foo(x, y):
+    pass

@@ -40,12 +40,14 @@ class TestMonkey:
     def test_get_current_time(monkeypatch):
         def mockreturn():
             return '2018-10-11 12:09:45'
+
         TestMonkey.monkeypatch.setattr(mi, 'get_current_date_time', mockreturn)
         x = mi.get_current_date_time()
         assert x == '2018-10-11 12:09:45'
 
 
-    def test_get_some_variable(object):
-        TestMonkey.monkeypatch.setattr('packed_project.monkey_patch.datetime', 'now', lambda x: "This is John")
+    '''def test_get_some_variable(object):
+        TestMonkey.monkeypatch.setattr(mi, 'datetime.datetime.now', lambda x: "This is John")
+        #TestMonkey.monkeypatch.setattr('packed_project.monkey_patch.datetime', 'now', lambda x: "This is John")
         x = mi.get_some_date_time(object)
-        assert x == "asdadasd"
+        assert x == "asdadasd"'''
